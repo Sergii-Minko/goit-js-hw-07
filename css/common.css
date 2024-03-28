@@ -185,3 +185,53 @@ button {
   margin: 0px;
   width: 148px;
 }
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  border-radius: 8px;
+  padding: 32px;
+  width: 486px;
+  height: 104px;
+  background: #f6f6fe;
+}
+
+#controls input {
+  border: 1px solid #808080;
+  border-radius: 8px;
+  padding: 8px;
+  padding-left: 72px;
+  width: 150px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+  overflow-y: hidden;
+}
+#controls button {
+  width: 120px;
+  margin: 0px;
+}
+#controls button:last-child {
+  background: #ff4e4e;
+}
+#boxes {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  gap: 16px;
+  align-items: top;
+  border-radius: 8px;
+  padding: 32px;
+  width: 486px;
+  min-height: 160px;
+  height: auto;
+  background: #f6f6fe;
+  margin-top: 16px;
+}
