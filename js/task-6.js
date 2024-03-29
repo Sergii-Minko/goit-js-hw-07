@@ -1,41 +1,41 @@
+const boxEl = document.querySelector('#boxes');
+const amountInput = document.querySelector('input');
+const baseWidthHeigth = 30;
+const increment = 10;
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, 0)}`;
 }
 function onBtnElClick() {
-  const amount = document.querySelector('input').value;
-  if (amount >= 1 && amount < 100) {
-    createBoxes(amount);
-  }
+  createBoxes(amountInput.value);
 }
 
 function destroyBoxes() {
-  const boxEl = document.querySelector('#boxes');
   boxEl.innerHTML = '';
+  amountInput.value = '';
 }
 
 function createBox(index) {
-  const newBox = {
-    width: 30 + 10 * (index - 1),
-    height: 30 + 10 * (index - 1),
-    backgroundColor: getRandomHexColor(),
-  };
   const newBoxElement = document.createElement('div');
-  newBoxElement.style = `width: ${newBox.width}px; height: ${newBox.height}px; background-color: ${newBox.backgroundColor};`;
+  newBoxElement.style = `width: ${
+    baseWidthHeigth + increment * index
+  }px; height: ${
+    baseWidthHeigth + increment * index
+  }px; background-color: ${getRandomHexColor()};`;
   return newBoxElement;
 }
 
 function createBoxes(amount) {
-  const boxesArrayEl = [];
-  const boxEl = document.querySelector('#boxes');
-  boxEl.innerHTML = '';
-  for (let i = 1; i <= amount; i += 1) {
-    boxesArrayEl.push(createBox(i));
+  if (amount >= 1 && amount <= 100) {
+    const boxesArrayEl = [];
+    destroyBoxes();
+    for (let i = 1; i <= amount; i += 1) {
+      boxesArrayEl.push(createBox(i - 1));
+    }
+    boxEl.append(...boxesArrayEl);
   }
-  boxEl.append(...boxesArrayEl);
-  const amountInput = document.querySelector('input');
-  amountInput.value = '';
 }
 
 const createFocusBtn = document.querySelector('button[data-create]');
